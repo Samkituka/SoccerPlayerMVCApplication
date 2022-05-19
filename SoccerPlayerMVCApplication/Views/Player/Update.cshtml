@@ -1,0 +1,55 @@
+﻿@model PlayerViewModel  
+@using SoccerPlayer.DataAccess.Models
+
+@{
+    string pageType = Model.CurrentPlayer.PlayerID > 0 ? "Update Player" : "Create Player";
+
+    ViewData["Title"] = $"SoccerPlayer Information | {pageType}";
+}
+
+<form action="~/Player/Index" method="post">
+        
+    <div>
+        <div class="row">
+            <div class="col-6 offset-3 text-center">
+                <h1 class="display-4" style="margin: 20px 0px;">@pageType</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>First Name: </label>
+                <input type="text" class="form-control" name="firstName" value="@Model.CurrentPlayer.FirstName" />
+            </div>
+            <div class="col-md-3 form-group">
+                <label>Last Name: </label>
+                <input type="text" class="form-control" name="lastName" value="@Model.CurrentPlayer.LastName" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Age: </label>
+                <input type="text"  class="form-control" name="Age" value="@Model.CurrentPlayer.Age" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Team: </label>
+                <input type="text"  class="form-control" name="Team" value="@Model.CurrentPlayer.Team  " />
+            </div>
+            <div class="form-row">
+                <div class="col-md-3 offset-md-3 form-group">
+                    <label>Position: </label>
+                    <input type="text"  class="form-control" name="Position" value="@Model.CurrentPlayer.Position    " />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 offset-md-3">
+                    <button type="button" class="btn btn-secondary" onclick="location.href = '/Player/Index'">CANCEL</button>
+                    <button type="submit" class="btn btn-primary">SAVE </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="PlayerID" value="@Model.CurrentPlayer.PlayerID" />
+</form>
+

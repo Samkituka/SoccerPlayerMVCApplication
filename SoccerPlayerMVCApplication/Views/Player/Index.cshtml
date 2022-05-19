@@ -1,0 +1,87 @@
+﻿@model PlayerViewModel
+@using SoccerPlayer.DataAccess.Models;
+
+@{
+    ViewData["Title"] = "SoccerPlayer Information | Player";
+}
+
+<script type="text/javascript">
+    function openLocation(url) {
+        window.location.href=url;
+    }
+
+    function confirmDelete(id) {
+        $("#hdnDeletePlayerID").val(id);
+        openModal("deleteModal");
+    }
+
+    function cancelDelete() {
+        $("#hdnDeletePlayerID").val(0);
+        closeModal("deleteModal");
+    }
+
+    function deletePlayer() {
+        var id = $("#hdnDeletePlayerID").val();
+        window.location.href="/Player/Delete/" + id;
+    }
+</script>
+
+<input type="hidden" id="hdnDeletePlayerID" value="0" />
+
+<div class="text-center">
+    @if (!String.IsNullOrEmpty(Model.ActionMessage))
+    {
+        string colorClass = Model.IsActionSuccess ? "alert-success" : "alert-danger";
+
+        <div class="alert @colorClass alert-dismissible fade show" role="alert">
+            <strong>@Model.ActionMessage</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    <h1 class="display-4">Players</h1>
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <table class="table">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Team</th>
+                    <th>Position</th>
+                    <th colspan="2"><button type="button" onclick="javascript:openLocation('/Player/Update/0')" class="btn btn-success btn-sm">ADD NEW PLAYER</button></th>
+                </tr>
+
+                @foreach (PlayerModel player in Model.PlayerList)
+                {
+            <tr>
+                <td>@player.FirstName</td>
+                <td>@player.LastName</td>
+                <td>@player.Age</td>
+                <td>@player.Team</td>
+                <td>@player.Position  </td>
+                <td><button type="button" onclick="javascript:openLocation('/Player/Update/@player.PlayerID')" class="btn btn-secondary btn-sm">EDIT</button></td>
+                <td><button type="button" onclick="javascript:confirmDelete(@player.PlayerID)" class="btn btn-danger btn-sm">DELETE</button></td>
+            </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">CONFIRM DELETE</h5>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this player?</p>
+                <button type="button" onclick="javascript:cancelDelete()" class="btn btn-secondary btn-sm">CANCEL</button>
+                <button type="button" onclick="javascript:deleteContact()" class="btn btn-danger btn-sm">DELETE</button>
+            </div>
+        </div>
+    </div>
+</div>
