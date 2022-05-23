@@ -1,13 +1,13 @@
-﻿@model PlayerViewModel
+﻿@model PlayerViewModel  
 @using SoccerPlayer.DataAccess.Models;
 
 @{
-    ViewData["Title"] = "SoccerPlayer Information | Player";
+    ViewData["Title"] = "SoccerPlayerMVCApplication | Player";
 }
 
 <script type="text/javascript">
     function openLocation(url) {
-        window.location.href=url;
+        window.location.href= url;
     }
 
     function confirmDelete(id) {
@@ -20,9 +20,10 @@
         closeModal("deleteModal");
     }
 
-    function deletePlayer() {
+    function deletePlayers() {
         var id = $("#hdnDeletePlayerID").val();
-        window.location.href="/Player/Delete/" + id;
+        console.log(id);
+        //window.location.href= "/Players/Delete/" + id;
     }
 </script>
 
@@ -51,20 +52,20 @@
                     <th>Age</th>
                     <th>Team</th>
                     <th>Position</th>
-                    <th colspan="2"><button type="button" onclick="javascript:openLocation('/Player/Update/0')" class="btn btn-success btn-sm">ADD NEW PLAYER</button></th>
+                    <th colspan="2"><button type="button" onclick="javascript:openLocation('/Players/Update/0')" class="btn btn-success btn-sm">ADD NEW PLAYER</button></th>
                 </tr>
 
                 @foreach (PlayerModel player in Model.PlayerList)
                 {
-            <tr>
-                <td>@player.FirstName</td>
-                <td>@player.LastName</td>
-                <td>@player.Age</td>
-                <td>@player.Team</td>
-                <td>@player.Position  </td>
-                <td><button type="button" onclick="javascript:openLocation('/Player/Update/@player.PlayerID')" class="btn btn-secondary btn-sm">EDIT</button></td>
-                <td><button type="button" onclick="javascript:confirmDelete(@player.PlayerID)" class="btn btn-danger btn-sm">DELETE</button></td>
-            </tr>
+                    <tr>
+                         <td>@player.FirstName</td>
+                         <td>@player.LastName</td>
+                         <td>@player.Age</td>
+                         <td>@player.Team</td>
+                         <td>@player.Position</td>
+                         <td><button type="button" onclick="javascript:openLocation('/Players/Update/@player.PlayerID')" class="btn btn-secondary btn-sm">EDIT</button></td>
+                         <td><button type="button" onclick="javascript:confirmDelete(@player.PlayerID)" class="btn btn-danger btn-sm">DELETE</button></td>
+                    </tr>
                 }
             </table>
         </div>
@@ -80,7 +81,7 @@
             <div class="modal-body">
                 <p>Are you sure you want to delete this player?</p>
                 <button type="button" onclick="javascript:cancelDelete()" class="btn btn-secondary btn-sm">CANCEL</button>
-                <button type="button" onclick="javascript:deleteContact()" class="btn btn-danger btn-sm">DELETE</button>
+                <button type="button" onclick="javascript:deletePlayers()" class="btn btn-danger btn-sm">DELETE</button>
             </div>
         </div>
     </div>

@@ -2,12 +2,12 @@
 @using SoccerPlayer.DataAccess.Models
 
 @{
-    string pageType = Model.CurrentPlayer.PlayerID > 0 ? "Update Player" : "Create Player";
+    string pageType = Model.CurrentPlayer.PlayerID > 0 ? "Update Players" : "Create Players";
 
-    ViewData["Title"] = $"SoccerPlayer Information | {pageType}";
+    ViewData["Title"] = $"SoccerPlayerMVCApplication | {pageType}";
 }
 
-<form action="~/Player/Index" method="post">
+<form action="~/Players/Index" method="post">
         
     <div>
         <div class="row">
@@ -44,7 +44,7 @@
             </div>
             <div class="form-row">
                 <div class="col-md-6 offset-md-3">
-                    <button type="button" class="btn btn-secondary" onclick="location.href = '/Player/Index'">CANCEL</button>
+                    <button type="button" class="btn btn-secondary" onclick="location.href = '/Players/Index'">CANCEL</button>
                     <button type="submit" class="btn btn-primary">SAVE </button>
                 </div>
             </div>

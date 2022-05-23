@@ -4,7 +4,6 @@ using SoccerPlayer.DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Web.Mvc;
 
 namespace SoccerPlayer.DataAcess.Controllers
 {
@@ -13,7 +12,7 @@ namespace SoccerPlayer.DataAcess.Controllers
         protected string sqlConnectionString = ConfigurationManager.ConnectionStrings["SoccerPlayer"].ConnectionString;
     }
 
-    public class PlayerController : Controller 
+    public class PlayerController
     {
 
         public static int CreatePlayer(string FirstName, string LastName, string Age, string Team, string Position, ISoccerPlayerConfigManager configManager )
@@ -79,7 +78,7 @@ namespace SoccerPlayer.DataAcess.Controllers
                     sqlCommand.Parameters.Add(new SqlParameter("@POSITION", Position));
                     sqlCommand.Parameters.Add(new SqlParameter("@PLAYERID", PlayerID));
 
-                    sqlConnection.Open();
+                    sqlCommand.Connection.Open();
                     sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
                 }
@@ -101,7 +100,7 @@ namespace SoccerPlayer.DataAcess.Controllers
                 {
                     sqlCommand.Parameters.Add(new SqlParameter("@PLAYERID", PlayerID));
 
-                    sqlConnection.Open();
+                    sqlCommand.Connection.Open();
                     sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
                 }

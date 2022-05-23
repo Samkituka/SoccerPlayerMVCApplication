@@ -1,21 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Data;
-using System.Web.Mvc;
-using Microsoft.Extensions.Logging;
 using SoccerPlayerMVCApplication.Models;
+using SoccerPlayer.DataAccess.Models;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using SoccerPlayer.DataAcess.Controllers;
-using SoccerPlayer.DataAcess;
-using SoccerPlayer.DataAccess.Models;
-using Microsoft.AspNetCore.Mvc.Controllers;
 using Controller = Microsoft.AspNetCore.Mvc.Controller;
-using HttpPostAttribute = Microsoft.AspNetCore.Mvc.HttpPostAttribute;
+using SoccerPlayer.DataAcess;
+using SoccerPlayer.DataAcess.Controllers;
 
 namespace SoccerPlayerMVCApplication.Controllers
 {

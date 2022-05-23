@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SoccerPlayer.DataAcess;
+    using SoccerPlayer.DataAcess;
 using SoccerPlayer.DataAcess.Controllers;
 using SoccerPlayer.DataAccess.Models;
 
@@ -20,14 +20,14 @@ namespace SoccerPlayerMVCApplication.Models
 
         public string ActionMessage { get; set; }
 
-        public PlayerViewModel(ISoccerPlayerConfigManager  configuration)
+        public PlayerViewModel(ISoccerPlayerConfigManager configuration)
         {
             _configuration = configuration;
             PlayerList = GetAllPlayers();
             CurrentPlayer = PlayerList.FirstOrDefault();
         }
 
-        public PlayerViewModel(ISoccerPlayerConfigManager  configuration, int PlayerID)
+        public PlayerViewModel(ISoccerPlayerConfigManager configuration, int PlayerID)
         {
             _configuration = configuration;
             PlayerList = new List<PlayerModel>();
